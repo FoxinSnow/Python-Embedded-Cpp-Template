@@ -30,3 +30,4 @@
 *.exe
 *.out
 *.app
+/Template/Template/Template.vcxproj.user
