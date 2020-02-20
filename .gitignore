@@ -31,3 +31,6 @@
 *.out
 *.app
 /Template/Template/Template.vcxproj.user
+/Template/x64
+/Template/Template/__pycache__
+/Template/Template/x64
