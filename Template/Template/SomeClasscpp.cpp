@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include "Python.h"
 #include "SomeClass.h"
 
@@ -42,18 +43,23 @@ void SomeClass::callScript()
 			throw "The python function cannot be called.";
 		}
 
-		/*PyObject * parameters = PyTuple_New(4);
-		PyObject * para0 = Py_BuildValue("i", para_int0);
-		PyTuple_SetItem(parameters, 0, para0);
-		PyObject * para1 = Py_BuildValue("[i, i]", para_int1, para_int2);
-		PyTuple_SetItem(parameters, 1, para1);
-		PyObject * para2 = Py_BuildValue("f", para_float);
-		PyTuple_SetItem(parameters, 2, para2);
-		PyObject * para3 = Py_BuildValue("s", para_string);
-		PyTuple_SetItem(parameters, 3, para3);*/
+		//PyObject * parameters = PyTuple_New(4);
+		//PyObject * para0 = Py_BuildValue("i", para_int0);
+		//PyTuple_SetItem(parameters, 0, para0);
+		PyObject * para1 = PyList_New(0);
+		std::vector<int>::iterator it;
+		for (it = para_vector.begin(); it != para_vector.end(); it++)
+		{
+			PyList_Append(para1, PyLong_FromLong(*it));
+		}
+		////PyObject * para1 = Py_BuildValue("[i, i]", para_int1, para_int2);
+		//PyTuple_SetItem(parameters, 1, para1);
+		//PyObject * para2 = Py_BuildValue("f", para_float);
+		//PyTuple_SetItem(parameters, 2, para2);
+		//PyObject * para3 = Py_BuildValue("s", para_string);
+		//PyTuple_SetItem(parameters, 3, para3);
 
-		PyObject * parameters = Py_BuildValue("(i[ii]fs)", para_int0, para_int3,
-			para_int4, para_float, para_string);
+		PyObject * parameters = Py_BuildValue("(iOfs)", para_int0, para1, para_float, para_string);
 
 		PyObject * returnValue = PyObject_CallObject(pFunc, parameters);
 
