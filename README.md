@@ -11,7 +11,7 @@ Call third party Python libraries
 
 ## Usage
 Download directly and open with Visual Studio \
-Change the `C++ include`, `linker additional dependency`,`linker input` accordingly \
+Change the `C++ include`, `linker additional dependency`, `linker input` accordingly \
 Run the template to test
 
 ## Reference Links
